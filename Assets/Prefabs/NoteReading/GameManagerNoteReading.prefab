@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7810345795343026299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7810345795343026293}
+  - component: {fileID: 7810345795343026298}
+  m_Layer: 0
+  m_Name: GameManagerNoteReading
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7810345795343026293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7810345795343026299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 674.4997, y: 249.97678, z: -58.945328}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7810345795343026298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7810345795343026299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 059c5e42a7eac9d4e815f46a3897df51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notesSpritesTrebleKeyInError:
+  - {fileID: 6968852150830127377, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: 1998553107101803841, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: 8080826047833543696, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -336469517765778188, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -2989845149701502785, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -4025051443021387069, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -8611302164238830332, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: 5697279528091033944, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -5422567563083101707, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: 7305281164082851080, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: 1648268789456472064, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: 5383955239123697881, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: 2807340392131387042, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -604711669259041415, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -9204695280194365678, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -8575169074128039402, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -430724611275979194, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: 6096270951772740828, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: 996978551187391993, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -1020313165700608048, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -5162646139516433414, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: 4120282158685317975, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -3886980766004077543, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -8623676938111858692, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: 5247791444784523380, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: -8983850818823885110, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: 2901706385361674047, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  - {fileID: 6517364250764582760, guid: e42618f54e656bd428033d5f01511a04, type: 3}
+  notesSpritesTrebleKeyInSuccess:
+  - {fileID: -3563730773897742817, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 2831915866442975354, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: -724712341022082524, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: -2777907810279459875, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: -7534197693195094313, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: -4314467024168101045, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 1988009200061402906, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: -5009129993139569254, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: -6867776515459649793, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: -3190238307211908429, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 4157084299963354776, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 6114246437725046152, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: -7428702734364341804, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 2116480152040938381, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 7782237541185690455, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 954984705952691412, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 2832387758699840503, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: -7604984678805425386, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 5999216222500380157, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: -7731145310030129477, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 6468344463397411855, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 2286336135427303457, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 8196419747483661943, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 6905765700953599855, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 6373805690064462874, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: -1156871413008284277, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 912361513648013537, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  - {fileID: 4572414525767228004, guid: 32b3ffa801fd13c4ea336c30fdba8929, type: 3}
+  notesInStaff: []
+  currentIndexToGuess: 0

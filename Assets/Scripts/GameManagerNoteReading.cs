@@ -1,27 +1,46 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManagerNoteReading : MonoBehaviour
 {
+    [SerializeField] private int levelIndex;
     [SerializeField] private List<Sprite> notesSpritesTrebleKeyInError;
     [SerializeField] private List<Sprite> notesSpritesTrebleKeyInSuccess;
 
-    public static GameManager instance;
+    public static GameManagerNoteReading instance;
     public List<Note> notesInStaff;
     public int currentIndexToGuess = 0;
 
     private float moveSpeed = 40;
+    private int score = 0;
 
     private void Awake()
     {
         if (instance != null)
         {
-            Debug.LogWarning("There is more than one instance of GameManager");
+            Debug.LogWarning("There is more than one instance of GameManagerNoteReading");
             return;
         }
 
         instance = this;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(StartTimer());
+    }
+
+    IEnumerator StartTimer()
+    {
+        yield return new WaitForSeconds(10);
+        Debug.Log("End Of Game");
+        Debug.Log(score);
+        GlobalGameManager.instance.SetReadingNoteScore(levelIndex, score);
+        SceneManager.LoadScene("MenuNoteReading");
+        
     }
 
     private Sprite GetTrebleKeyNoteSpriteInError(string noteName)
@@ -80,6 +99,8 @@ public class GameManager : MonoBehaviour
                 {
                     moveSpeed += 5;
                 }
+
+                score += 5;
             }
             else
             {
@@ -92,6 +113,8 @@ public class GameManager : MonoBehaviour
                 {
                     moveSpeed -= 5;
                 }
+
+                score -= 3;
             }
 
             currentIndexToGuess++;
