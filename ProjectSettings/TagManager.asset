@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - EmptyStaff
+  - StopScrollingLimit
   layers:
   - Default
   - TransparentFX

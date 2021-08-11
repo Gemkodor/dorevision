@@ -6,14 +6,16 @@ public class Note : MonoBehaviour
 {
     [SerializeField] private List<Sprite> notesSprites;
     [SerializeField] private string noteName;
-    private float moveSpeed = -80;
+    private int index;
     private Image staff;
     private Image noteImg;
+    private Image stopScrollingLimit;
 
     private void Awake()
     {
         noteImg = GetComponent<Image>();
         staff = GameObject.FindGameObjectWithTag("EmptyStaff").GetComponent<Image>();
+        stopScrollingLimit = GameObject.FindGameObjectWithTag("StopScrollingLimit").GetComponent<Image>();
 
         if (noteName != "")
         {
@@ -23,7 +25,14 @@ public class Note : MonoBehaviour
 
     private void Update()
     {
-        if (noteImg.rectTransform.rect.Overlaps(staff.rectTransform.rect))
+        // Check if we're near the limit to stop movement if player hasn't guessed yet
+        float distance = Vector2.Distance(stopScrollingLimit.transform.position, transform.position);
+        if (distance < 15 && GameManager.instance.currentIndexToGuess == index)
+        {
+            GameManager.instance.StopMovement();
+        }
+
+        if (GameManager.instance.IsNoteInsideStaff(staff, noteImg))
         {
             noteImg.enabled = true;
         } 
@@ -32,7 +41,7 @@ public class Note : MonoBehaviour
             noteImg.enabled = false;
         }
 
-        transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+        transform.Translate(-GameManager.instance.GetMoveSpeed() * Time.deltaTime, 0, 0);
     }
 
     private void SetSpriteFromNoteName()
@@ -48,6 +57,11 @@ public class Note : MonoBehaviour
         }
     }
 
+    public string GetNoteName()
+    {
+        return noteName.Split('_')[0];
+    }
+
     public string GetName()
     {
         return noteName;
@@ -58,5 +72,15 @@ public class Note : MonoBehaviour
         noteName = name;
         transform.name = name;
         SetSpriteFromNoteName();
+    }
+
+    public int GetIndex()
+    {
+        return index;
+    }
+
+    public void SetIndex(int _index)
+    {
+        index = _index;
     }
 }
