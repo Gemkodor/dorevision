@@ -609,7 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ee32ba2b44dc948bb196af41fda422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbReadingNotesLevels: 2
+  nbReadingNotesLevels: 3
 --- !u!4 &916806087
 Transform:
   m_ObjectHideFlags: 0

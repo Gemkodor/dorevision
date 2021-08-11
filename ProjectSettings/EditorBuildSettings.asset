@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NoteReading/NR_Level_1.unity
     guid: 7dd050975aa2de74d8c9c40982a006cc
+  - enabled: 1
+    path: Assets/Scenes/NoteReading/NR_Level_2.unity
+    guid: c3b7f892991fb9648ae3667c06e8196c
+  - enabled: 1
+    path: Assets/Scenes/NoteReading/NR_Level_3.unity
+    guid: 884073a01c2c3524390dcde9c4142fd2
   m_configObjects: {}

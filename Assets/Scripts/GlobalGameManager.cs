@@ -26,7 +26,12 @@ public class GlobalGameManager : MonoBehaviour
 
     public int GetReadingNoteLevelScore(int level)
     {
-        return scoresReadingNotes[level];
+        if (scoresReadingNotes.ContainsKey(level))
+        {
+            return scoresReadingNotes[level];
+        }
+
+        return 0;
     }
 
     public void SetReadingNoteScore(int level, int score)

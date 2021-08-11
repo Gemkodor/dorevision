@@ -52,7 +52,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725469450}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34dbd046aee0d4f4d8d86c60d948187b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notePrefab: {fileID: 2420363119186449567, guid: e7f61fb106ecf074b86ce86ca5af8600, type: 3}
   notesSprites:
   - {fileID: 5681028673520408290, guid: c3d6db564b68d9348b673c7787b51b5e, type: 3}
   - {fileID: 3925304816884864994, guid: c3d6db564b68d9348b673c7787b51b5e, type: 3}
@@ -268,8 +269,9 @@ MonoBehaviour:
   - {fileID: 931611604458019140, guid: c3d6db564b68d9348b673c7787b51b5e, type: 3}
   - {fileID: 4406284691434473091, guid: c3d6db564b68d9348b673c7787b51b5e, type: 3}
   nbNotesToGuess: 100
-  spaceBetweenNotes: 50
-  notePrefab: {fileID: 2420363119186449567, guid: e7f61fb106ecf074b86ce86ca5af8600, type: 3}
+  minOctaveHeight: 1
+  maxOctaveHeight: 4
+  numberOfDistinctNotes: 7
   notesToGuess: []
 --- !u!1 &6416012458577278936
 GameObject:

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ public class Note : MonoBehaviour
     private Image staff;
     private Image noteImg;
     private Image stopScrollingLimit;
+    private bool canSlowDown = true;
 
     private void Awake()
     {
@@ -23,13 +25,29 @@ public class Note : MonoBehaviour
         }
     }
 
+    IEnumerator ResetSlowDown()
+    {
+        yield return new WaitForSeconds(2);
+        canSlowDown = true;
+    }
+
     private void Update()
     {
         // Check if we're near the limit to stop movement if player hasn't guessed yet
         float distance = Vector2.Distance(stopScrollingLimit.transform.position, transform.position);
-        if (distance < 15 && GameManagerNoteReading.instance.currentIndexToGuess == index)
+
+        if (GameManagerNoteReading.instance.currentIndexToGuess == index)
         {
-            GameManagerNoteReading.instance.StopMovement();
+            if (distance < 15)
+            {
+                GameManagerNoteReading.instance.StopMovement();
+            }
+            else if (distance < 400 && canSlowDown)
+            {
+                GameManagerNoteReading.instance.UpdateMoveSpeed(-5);
+                canSlowDown = false;
+                StartCoroutine(ResetSlowDown());
+            }
         }
 
         if (GameManagerNoteReading.instance.IsNoteInsideStaff(staff, noteImg))

@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059c5e42a7eac9d4e815f46a3897df51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelIndex: 3
+  durationOfGame: 60
   notesSpritesTrebleKeyInError:
   - {fileID: 6968852150830127377, guid: e42618f54e656bd428033d5f01511a04, type: 3}
   - {fileID: 1998553107101803841, guid: e42618f54e656bd428033d5f01511a04, type: 3}

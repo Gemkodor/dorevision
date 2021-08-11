@@ -5,15 +5,15 @@ public class Staff : MonoBehaviour
 {
     [SerializeField] private Note notePrefab;
     [SerializeField] private List<Sprite> notesSprites;
-    [SerializeField] private int nbNotesToGuess = 100;
     [SerializeField] private int minOctaveHeight = 1;
     [SerializeField] private int maxOctaveHeight = 4;
     [SerializeField] private int numberOfDistinctNotes = 7;
-     
+
     public List<string> notesToGuess = new List<string>();
 
     private string[] notes = new string[] { "do", "re", "mi", "fa", "sol", "la", "si" };
     private int spaceBetweenNotes = 50;
+    private int nbNotesToGuess = 1000;
 
     void Start()
     {

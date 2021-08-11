@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManagerNoteReading : MonoBehaviour
 {
     [SerializeField] private int levelIndex;
+    [SerializeField] private int durationOfGame = 60;
     [SerializeField] private List<Sprite> notesSpritesTrebleKeyInError;
     [SerializeField] private List<Sprite> notesSpritesTrebleKeyInSuccess;
 
@@ -14,7 +15,8 @@ public class GameManagerNoteReading : MonoBehaviour
     public List<Note> notesInStaff;
     public int currentIndexToGuess = 0;
 
-    private float moveSpeed = 40;
+    private float initialMoveSpeed = 60;
+    private float moveSpeed = 60;
     private int score = 0;
 
     private void Awake()
@@ -35,12 +37,9 @@ public class GameManagerNoteReading : MonoBehaviour
 
     IEnumerator StartTimer()
     {
-        yield return new WaitForSeconds(10);
-        Debug.Log("End Of Game");
-        Debug.Log(score);
+        yield return new WaitForSeconds(durationOfGame);
         GlobalGameManager.instance.SetReadingNoteScore(levelIndex, score);
-        SceneManager.LoadScene("MenuNoteReading");
-        
+        SceneManager.LoadScene("MenuNoteReading"); 
     }
 
     private Sprite GetTrebleKeyNoteSpriteInError(string noteName)
@@ -90,30 +89,13 @@ public class GameManagerNoteReading : MonoBehaviour
             if (notesInStaff[currentIndexToGuess].GetNoteName() == noteGuessed)
             {
                 notesInStaff[currentIndexToGuess].GetComponent<Image>().sprite = GetTrebleKeyNoteSpriteInSuccess(notesInStaff[currentIndexToGuess].GetName());
-
-                if (moveSpeed == 0)
-                {
-                    moveSpeed = 40;
-                }
-                else
-                {
-                    moveSpeed += 5;
-                }
-
+                UpdateMoveSpeed(5);
                 score += 5;
             }
             else
             {
                 notesInStaff[currentIndexToGuess].GetComponent<Image>().sprite = GetTrebleKeyNoteSpriteInError(notesInStaff[currentIndexToGuess].GetName());
-                if (moveSpeed == 0)
-                {
-                    moveSpeed = 40;
-                }
-                else
-                {
-                    moveSpeed -= 5;
-                }
-
+                UpdateMoveSpeed(-5);
                 score -= 3;
             }
 
@@ -124,6 +106,20 @@ public class GameManagerNoteReading : MonoBehaviour
     public float GetMoveSpeed()
     {
         return moveSpeed;
+    }
+
+    public void UpdateMoveSpeed(int qty)
+    {
+        if (moveSpeed == 0)
+        {
+            moveSpeed = initialMoveSpeed;
+        }
+        else
+        {
+            moveSpeed += qty;
+        }
+
+        moveSpeed = Mathf.Clamp(moveSpeed, 0, 130);
     }
 
     public void StopMovement()
