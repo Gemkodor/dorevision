@@ -13,10 +13,12 @@ public class GameManagerNoteReading : MonoBehaviour
 
     public static GameManagerNoteReading instance;
     public List<Note> notesInStaff;
-    public int currentIndexToGuess = 0;
+    private int currentIndexToGuess = 0;
 
-    private float initialMoveSpeed = 60;
-    private float moveSpeed = 60;
+    private int initialMoveSpeed = 100;
+    private int moveSpeed = 100;
+    private int maxMoveSpeed = 350;
+    private int stepSpeed = 10;
     private int score = 0;
 
     private void Awake()
@@ -73,7 +75,7 @@ public class GameManagerNoteReading : MonoBehaviour
         Vector3[] corners = new Vector3[4];
         float noteWidth = note.rectTransform.rect.width;
         
-        staff.rectTransform.GetWorldCorners(corners); // x, y, width, height
+        staff.rectTransform.GetWorldCorners(corners);
         Rect staffRect = new Rect(corners[0].x + noteWidth, corners[0].y, (corners[2].x - corners[0].x) - (noteWidth * 2), corners[2].y - corners[0].y);
 
         note.rectTransform.GetWorldCorners(corners);
@@ -89,13 +91,13 @@ public class GameManagerNoteReading : MonoBehaviour
             if (notesInStaff[currentIndexToGuess].GetNoteName() == noteGuessed)
             {
                 notesInStaff[currentIndexToGuess].GetComponent<Image>().sprite = GetTrebleKeyNoteSpriteInSuccess(notesInStaff[currentIndexToGuess].GetName());
-                UpdateMoveSpeed(5);
+                UpdateMoveSpeed(stepSpeed);
                 score += 5;
             }
             else
             {
                 notesInStaff[currentIndexToGuess].GetComponent<Image>().sprite = GetTrebleKeyNoteSpriteInError(notesInStaff[currentIndexToGuess].GetName());
-                UpdateMoveSpeed(-5);
+                UpdateMoveSpeed(-stepSpeed);
                 score -= 3;
             }
 
@@ -119,11 +121,16 @@ public class GameManagerNoteReading : MonoBehaviour
             moveSpeed += qty;
         }
 
-        moveSpeed = Mathf.Clamp(moveSpeed, 0, 130);
+        moveSpeed = Mathf.Clamp(moveSpeed, 0, maxMoveSpeed);
     }
 
     public void StopMovement()
     {
         moveSpeed = 0;
+    }
+
+    public int GetCurrentIndexToGuess()
+    {
+        return currentIndexToGuess;
     }
 }

@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -406.23627, y: -0.000051259995}
+  m_AnchoredPosition: {x: -406.23438, y: -0.000051259995}
   m_SizeDelta: {x: 2, y: 143}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1725469453
@@ -75,6 +75,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4792499929247126173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2663480980134201145}
+  m_Layer: 5
+  m_Name: SpawnNote
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2663480980134201145
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4792499929247126173}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6416012458577278937}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 525.8879, y: -0.0000038146973}
+  m_SizeDelta: {x: 67.7757, y: 143}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6416012457036402813
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +220,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 15.000008, y: 0}
+  m_AnchoredPosition: {x: 15, y: 0}
   m_SizeDelta: {x: 954, y: 143}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6416012458181748508
@@ -268,10 +303,10 @@ MonoBehaviour:
   - {fileID: 222325381629969668, guid: c3d6db564b68d9348b673c7787b51b5e, type: 3}
   - {fileID: 931611604458019140, guid: c3d6db564b68d9348b673c7787b51b5e, type: 3}
   - {fileID: 4406284691434473091, guid: c3d6db564b68d9348b673c7787b51b5e, type: 3}
-  nbNotesToGuess: 100
-  minOctaveHeight: 1
-  maxOctaveHeight: 4
-  numberOfDistinctNotes: 7
+  minOctaveHeight: 2
+  maxOctaveHeight: 2
+  numberOfDistinctNotes: 3
+  spawnNote: {fileID: 4792499929247126173}
   notesToGuess: []
 --- !u!1 &6416012458577278936
 GameObject:
@@ -303,6 +338,7 @@ RectTransform:
   - {fileID: 6416012457036402810}
   - {fileID: 6416012458181748510}
   - {fileID: 1725469451}
+  - {fileID: 2663480980134201145}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

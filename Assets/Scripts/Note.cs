@@ -36,7 +36,7 @@ public class Note : MonoBehaviour
         // Check if we're near the limit to stop movement if player hasn't guessed yet
         float distance = Vector2.Distance(stopScrollingLimit.transform.position, transform.position);
 
-        if (GameManagerNoteReading.instance.currentIndexToGuess == index)
+        if (GameManagerNoteReading.instance.GetCurrentIndexToGuess() == index)
         {
             if (distance < 15)
             {
@@ -59,7 +59,7 @@ public class Note : MonoBehaviour
             noteImg.enabled = false;
         }
 
-        transform.Translate(-GameManagerNoteReading.instance.GetMoveSpeed() * Time.deltaTime, 0, 0);
+        transform.Translate(Vector3.left * Time.deltaTime * GameManagerNoteReading.instance.GetMoveSpeed());
     }
 
     private void SetSpriteFromNoteName()

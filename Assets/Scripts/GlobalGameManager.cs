@@ -7,6 +7,8 @@ public class GlobalGameManager : MonoBehaviour
     private Dictionary<int, int> scoresReadingNotes = new Dictionary<int, int>();
     public static GlobalGameManager instance;
 
+    private int nbCoins = 0;
+
     private void Awake()
     {
         if (instance != null)
@@ -37,5 +39,10 @@ public class GlobalGameManager : MonoBehaviour
     public void SetReadingNoteScore(int level, int score)
     {
         scoresReadingNotes[level] = score;
+    }
+
+    public int GetCoins()
+    {
+        return nbCoins;
     }
 }
