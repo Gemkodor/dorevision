@@ -11,26 +11,15 @@ public class GameManagerNoteReading : MonoBehaviour
     [SerializeField] private List<Sprite> notesSpritesTrebleKeyInError;
     [SerializeField] private List<Sprite> notesSpritesTrebleKeyInSuccess;
 
-    public static GameManagerNoteReading instance;
     public List<Note> notesInStaff;
+
+    private int moveSpeed = 5;
+    private int minMoveSpeed = 5;
+    private int maxMoveSpeed = 20;
+    private int stepSpeed = 1;
+
     private int currentIndexToGuess = 0;
-
-    private int initialMoveSpeed = 100;
-    private int moveSpeed = 100;
-    private int maxMoveSpeed = 350;
-    private int stepSpeed = 10;
     private int score = 0;
-
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Debug.LogWarning("There is more than one instance of GameManagerNoteReading");
-            return;
-        }
-
-        instance = this;
-    }
 
     private void Start()
     {
@@ -41,6 +30,13 @@ public class GameManagerNoteReading : MonoBehaviour
     {
         yield return new WaitForSeconds(durationOfGame);
         GlobalGameManager.instance.SetReadingNoteScore(levelIndex, score);
+
+        // Unlock next level is score is at least 100
+        if (score > 100)
+        {
+            GlobalGameManager.instance.SetReadingNoteLevelState(levelIndex + 1, true);
+        }
+
         SceneManager.LoadScene("MenuNoteReading"); 
     }
 
@@ -114,7 +110,7 @@ public class GameManagerNoteReading : MonoBehaviour
     {
         if (moveSpeed == 0)
         {
-            moveSpeed = initialMoveSpeed;
+            moveSpeed = minMoveSpeed;
         }
         else
         {

@@ -5,6 +5,7 @@ public class GlobalGameManager : MonoBehaviour
 {
     [SerializeField] private int nbReadingNotesLevels;
     private Dictionary<int, int> scoresReadingNotes = new Dictionary<int, int>();
+    private Dictionary<int, bool> lockStateReadingNotes = new Dictionary<int, bool>();
     public static GlobalGameManager instance;
 
     private int nbCoins = 0;
@@ -19,11 +20,12 @@ public class GlobalGameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(this);
+        LoadProgress();
+    }
 
-        for (int i = 1; i <= nbReadingNotesLevels; i++)
-        {
-            scoresReadingNotes.Add(i, 0);
-        }
+    public int GetCoins()
+    {
+        return nbCoins;
     }
 
     public int GetReadingNoteLevelScore(int level)
@@ -36,13 +38,58 @@ public class GlobalGameManager : MonoBehaviour
         return 0;
     }
 
+    public void SetReadingNoteLevelState(int level, bool unlock)
+    {
+        if (lockStateReadingNotes.ContainsKey(level))
+        {
+            lockStateReadingNotes[level] = unlock;
+            SaveProgress();
+        }
+    }
+
+    public bool isReadingNoteLevelUnlock(int level)
+    {
+        if (lockStateReadingNotes.ContainsKey(level))
+        {
+            return lockStateReadingNotes[level];
+        }
+
+        return false;
+    }
+
     public void SetReadingNoteScore(int level, int score)
     {
         scoresReadingNotes[level] = score;
+        SaveProgress();
     }
 
-    public int GetCoins()
+    public void LoadProgress()
     {
-        return nbCoins;
+        nbCoins = PlayerPrefs.GetInt("coins", 0);
+
+        for (int i = 1; i <= nbReadingNotesLevels; i++)
+        {
+            scoresReadingNotes.Add(i, PlayerPrefs.GetInt("noteReadingLevelScore" + i, 0));
+
+            if (i == 1)
+            {
+                lockStateReadingNotes.Add(i, true);
+            } 
+            else
+            {
+                lockStateReadingNotes.Add(i, PlayerPrefs.GetInt("noteReadingLevelState" + i, 0) == 1 ? true : false);
+            }
+        }
+    }
+
+    public void SaveProgress()
+    {
+        PlayerPrefs.SetInt("coins", nbCoins);
+
+        for (int i = 1; i <= nbReadingNotesLevels; i++)
+        {
+            PlayerPrefs.SetInt("noteReadingLevelScore" + i, scoresReadingNotes[i]);
+            PlayerPrefs.SetInt("noteReadingLevelState" + i, lockStateReadingNotes[i] ? 1 : 0);
+        }
     }
 }

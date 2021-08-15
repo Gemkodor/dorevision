@@ -17,9 +17,11 @@ public class Staff : MonoBehaviour
     private int spaceBetweenNotes;
     private int nbNotesToGuess = 300;
     private Vector3 localScale = Vector3.one;
+    private GameManagerNoteReading gameManagerNoteReading;
 
     void Start()
     {
+        gameManagerNoteReading = FindObjectOfType<GameManagerNoteReading>();
         localScale = GetComponent<Image>().transform.localScale;
         spaceBetweenNotes = Screen.width / 10;
 
@@ -36,7 +38,7 @@ public class Staff : MonoBehaviour
             noteOnStaff.SetIndex(i);
             noteOnStaff.SetName(noteToAdd);
 
-            GameManagerNoteReading.instance.notesInStaff.Add(noteOnStaff);
+            gameManagerNoteReading.notesInStaff.Add(noteOnStaff);
 
             float initialPosX = spawnNote.transform.position.x + (i * spaceBetweenNotes);
             noteOnStaff.transform.position = new Vector3(initialPosX, transform.position.y, transform.position.z);

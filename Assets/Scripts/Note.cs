@@ -12,9 +12,11 @@ public class Note : MonoBehaviour
     private Image noteImg;
     private Image stopScrollingLimit;
     private bool canSlowDown = true;
+    private GameManagerNoteReading gameManagerNoteReading;
 
     private void Awake()
     {
+        gameManagerNoteReading = FindObjectOfType<GameManagerNoteReading>();
         noteImg = GetComponent<Image>();
         staff = GameObject.FindGameObjectWithTag("EmptyStaff").GetComponent<Image>();
         stopScrollingLimit = GameObject.FindGameObjectWithTag("StopScrollingLimit").GetComponent<Image>();
@@ -36,21 +38,21 @@ public class Note : MonoBehaviour
         // Check if we're near the limit to stop movement if player hasn't guessed yet
         float distance = Vector2.Distance(stopScrollingLimit.transform.position, transform.position);
 
-        if (GameManagerNoteReading.instance.GetCurrentIndexToGuess() == index)
+        if (gameManagerNoteReading.GetCurrentIndexToGuess() == index)
         {
             if (distance < 15)
             {
-                GameManagerNoteReading.instance.StopMovement();
+                gameManagerNoteReading.StopMovement();
             }
             else if (distance < 400 && canSlowDown)
             {
-                GameManagerNoteReading.instance.UpdateMoveSpeed(-5);
+                gameManagerNoteReading.UpdateMoveSpeed(-5);
                 canSlowDown = false;
                 StartCoroutine(ResetSlowDown());
             }
         }
 
-        if (GameManagerNoteReading.instance.IsNoteInsideStaff(staff, noteImg))
+        if (gameManagerNoteReading.IsNoteInsideStaff(staff, noteImg))
         {
             noteImg.enabled = true;
         } 
@@ -59,7 +61,7 @@ public class Note : MonoBehaviour
             noteImg.enabled = false;
         }
 
-        transform.Translate(Vector3.left * Time.deltaTime * GameManagerNoteReading.instance.GetMoveSpeed());
+        transform.Translate((Vector3.left * Time.deltaTime * (Screen.width / 100)) * gameManagerNoteReading.GetMoveSpeed());
     }
 
     private void SetSpriteFromNoteName()

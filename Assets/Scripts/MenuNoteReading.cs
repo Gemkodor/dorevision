@@ -5,17 +5,32 @@ public class MenuNoteReading : MonoBehaviour
 {
     [SerializeField] private GameObject panelLevels;
 
+    private int[] starsLevels = new int[] { 100, 350, 500 };
+
     void Start()
     {
-        int index = 1;
-        foreach (Transform levelBox in panelLevels.transform)
+        int levelIndex = 1;
+        foreach (Transform levelRow in panelLevels.transform)
         {
-            int score = GlobalGameManager.instance.GetReadingNoteLevelScore(index);
+            foreach(Transform levelBox in levelRow)
+            {
+                int score = GlobalGameManager.instance.GetReadingNoteLevelScore(levelIndex);
 
-            DisplayLevelScore(levelBox, score);
-            DisplayLevelStars(levelBox, score);
+                DisplayLevelUnlock(levelBox, levelIndex);
+                DisplayLevelScore(levelBox, score);
+                DisplayLevelStars(levelBox, score);
 
-            index++;
+                levelIndex++;
+            }
+        }
+    }
+
+    private void DisplayLevelUnlock(Transform levelBox, int levelIndex)
+    {
+        Transform levelLockImg = levelBox.GetChild(1);
+        if (GlobalGameManager.instance.isReadingNoteLevelUnlock(levelIndex))
+        {
+            levelLockImg.gameObject.SetActive(false);
         }
     }
 
@@ -27,19 +42,7 @@ public class MenuNoteReading : MonoBehaviour
 
     private void DisplayLevelStars(Transform levelBox, int score)
     {
-        int nbStars = 0;
-        if (score >= 600)
-        {
-            nbStars++;
-        }
-        if (score >= 350)
-        {
-            nbStars++;
-        }
-        if (score >= 100)
-        {
-            nbStars++;
-        }
+        int nbStars = GetNbStars(score);
 
         Transform stars = levelBox.GetChild(0).Find("Stars");
         int i = 0;
@@ -51,5 +54,24 @@ public class MenuNoteReading : MonoBehaviour
             }
             i++;
         }
+    }
+
+    public int GetNbStars(int score)
+    {
+        int nbStars = 0;
+        if (score >= starsLevels[2])
+        {
+            nbStars++;
+        }
+        if (score >= starsLevels[1])
+        {
+            nbStars++;
+        }
+        if (score >= starsLevels[0])
+        {
+            nbStars++;
+        }
+
+        return nbStars;
     }
 }

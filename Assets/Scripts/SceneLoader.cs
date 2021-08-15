@@ -12,13 +12,13 @@ public class SceneLoader : MonoBehaviour
     {
         string sceneToLoad = "NR_Level_" + level;
 
-        if (Application.CanStreamedLevelBeLoaded(sceneToLoad))
+        if (GlobalGameManager.instance.isReadingNoteLevelUnlock(level) && Application.CanStreamedLevelBeLoaded(sceneToLoad))
         {
             SceneManager.LoadScene(sceneToLoad);
         }
         else
         {
-            Debug.LogWarning("Can't find scene to load");
+            Debug.LogWarning("Can't load note reading level");
         }
     }
 
